@@ -1,0 +1,47 @@
+{
+  "name": "maximumhealth-server",
+  "version": "1.0.0",
+  "description": "Express server for Maximum Health",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon --exec babel-node server.js",
+    "migrate:dev": "cross-env NODE_ENV=development npx sequelize db:migrate",
+    "migrate:prod": "cross-env NODE_ENV=production npx sequelize db:migrate",
+    "demigrate:dev:last": "cross-env NODE_ENV=development npx sequelize db:migrate:undo",
+    "demigrate:prod:last": "cross-env NODE_ENV=production npx sequelize db:migrate:undo",
+    "demigrate:dev:all": "cross-env NODE_ENV=development npx sequelize db:migrate:undo:all",
+    "demigrate:prod:all": "cross-env NODE_ENV=production npx sequelize db:migrate:undo:all",
+    "seed:dev": "cross-env NODE_ENV=development npx sequelize db:seed:all",
+    "seed:prod": "cross-env NODE_ENV=production npx sequelize db:seed:all",
+    "demigrate:redo:dev": "cross-env NODE_ENV=development npx sequelize db:migrate:undo:all && npm run migrate:dev && npm run seed:dev",
+    "demigrate:redo:prod": "cross-env NODE_ENV=production npx sequelize db:migrate:undo:all && npm run migrate:prod && npm run seed:prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "author": "Robert Odhiambo <odhizrober254@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.1",
+    "redis": "^4.7.0",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/node": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.7"
+  }
+}
