@@ -6,6 +6,7 @@ import { testConnection } from './src/database/config/database.config';
 import ProductsRoute from './src/routes/products.routes';
 import associateModels from './src/database/models/associationModels';
 import OrderRoutes from './src/routes/orders.routes';
+import "./src/utils/cron";
 
 dotenv.config();
 
