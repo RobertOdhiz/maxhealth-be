@@ -7,7 +7,6 @@
 
 # dotenv environment variable files
 .env
-.env.*
 
 # log files
 *.log
@@ -92,3 +91,5 @@ npm-debug.log*
 
 # Yarn configuration
 yarn-error.log
+.vercel
+.env*.local

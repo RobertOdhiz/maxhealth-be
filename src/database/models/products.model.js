@@ -46,6 +46,11 @@ const Product = sequelize.define("Product", {
       isInt: true,
     },
   },
+  tags: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
+    defaultValue: [],
+  },
 }, {
   timestamps: true,
   paranoid: true,
