@@ -1,8 +1,16 @@
 import winston from "winston";
 import { Pool } from "pg";
 import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
 
 dotenv.config();
+
+// Ensure logs directory exists
+const logDir = path.join(__dirname, "../logs");
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true }); // Creates the logs directory if it doesn't exist
+}
 
 // PostgreSQL Connection
 const pool = new Pool({
@@ -31,8 +39,8 @@ const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: "logs/app.log" }),
-    new PostgresTransport()
+    new winston.transports.File({ filename: path.join(logDir, "app.log") }), // Now uses the created directory
+    new PostgresTransport(),
   ],
 });
 
